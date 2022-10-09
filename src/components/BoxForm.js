@@ -1,23 +1,21 @@
 import { useState } from 'react'
 
 const BoxForm = (props) => {
-    const [boxColor, setBoxColor] = useState("")
-    const [boxHeight, setBoxHeight] = useState("")
-    const [boxWidth, setBoxWidth] = useState("")
+    const { boxColors, setBoxColors } = props
+    const [ color, setColor ] = useState("")
 
     const createNewBox = (e) => {
         e.preventDefault()
-        setBoxHeight("50px")
-        setBoxWidth("50px")
-        props.onNewBox( boxColor, boxHeight, boxWidth )
+        setBoxColors( [...boxColors, color] )   
     }
 
     return (
         <div>
+            <h1>Ayyy, lmao it makes box(s) tho...</h1>
             <form onSubmit={ createNewBox }>
                 <div>
                     <label>Choose a color name:</label>
-                    <input onChange={(e) => setBoxColor(e.target.value)}></input>
+                    <input onChange={(e) => setColor(e.target.value)}></input>
                 </div>
                 <div>
                     <input type="submit" value="Create Box"></input>
